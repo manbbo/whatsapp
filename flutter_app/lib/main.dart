@@ -72,32 +72,23 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Stack(
-          overflow: Overflow.clip,
-          children: <Widget>[
-            SingleChildScrollView(
-              padding: EdgeInsets.all(10),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                //crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  MessagesPage(),
-                ]
-              ),
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.all(5),
-                  child: TextBar(),
-                  decoration: new BoxDecoration(
-                    color: Colors.blue,
-                  ),
-                )
-              ],
-            ),
-          ],
-        ),
+        overflow: Overflow.clip,
+        children: <Widget>[
+          MessagesPage(),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.all(5),
+                child: TextBar(),
+                decoration: new BoxDecoration(
+                  color: Colors.blue,
+                ),
+              )
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

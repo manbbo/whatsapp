@@ -119,34 +119,65 @@ class _TextBar extends State<TextBar> {
 }
 
 class ChatBubble extends StatefulWidget {
-  String _text;// = 'Its me, mario';
-  ChatBubble(text) {
-    this._text = text;
+  String _text; // = 'Its me, mario';
+  bool _sent;
+  ChatBubble(_text, _sent) {
+    this._sent = _sent;
+    this._text = _text;
   }
 
   @override
-  _ChatBubbleState createState() => _ChatBubbleState(_text);
+  _ChatBubbleState createState() => _ChatBubbleState(_text, _sent);
 }
 
 class _ChatBubbleState extends State<ChatBubble> {
-  _ChatBubbleState(String text) {
-    setText(text);
+  String _text;
+  bool _sent;
+  _ChatBubbleState(_text, _sent) {
+    this._text = _text;
+    this._sent = _sent;
   }
 
-  String _text;
-  void setText(String text) {
-    this._text = text;
+  Alignment setAlignment() {
+    switch(_sent) {
+      case true:
+        return Alignment.topRight;
+        break;
+      case false:
+        return Alignment.topLeft;
+        break;
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      //alignment: Alignment.topLeft,
-      // ,
-      color: Colors.green,
-      constraints: BoxConstraints(maxWidth: 330),
-      padding: EdgeInsets.all(10),
-      child: Text(_text),
+      alignment: setAlignment(),
+        padding: EdgeInsets.all(5),
+        child: Container(
+          color: Colors.green,
+          constraints: BoxConstraints(maxWidth: 330),
+          padding: EdgeInsets.all(10),
+          child: Text(_text),
+        ),
+    )
+    ;
+  }
+}
+
+class ListWidget extends StatefulWidget {
+  @override
+  _ListWidgetState createState() => _ListWidgetState();
+}
+
+class _ListWidgetState extends State<ListWidget> {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implementar o JSON aqui dentro da classe
+    //
+    return new ListView.builder(
+
+      //children: <Widget>[ChatBubble("assad")],
     );
   }
 }
