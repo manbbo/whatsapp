@@ -38,7 +38,6 @@ class _TextBar extends State<TextBar> {
               icon: IconButton(
                 //first Icon
                 icon: Icon(Icons.insert_emoticon),
-                color: Colors.black,
                 onPressed: () => {
                   showDialog(
                       context: context,
@@ -139,7 +138,7 @@ class _ChatBubbleState extends State<ChatBubble> {
   }
 
   Alignment setAlignment() {
-    switch(_sent) {
+    switch (_sent) {
       case true:
         return Alignment.topRight;
         break;
@@ -153,31 +152,40 @@ class _ChatBubbleState extends State<ChatBubble> {
   Widget build(BuildContext context) {
     return Container(
       alignment: setAlignment(),
-        padding: EdgeInsets.all(5),
-        child: Container(
-          color: Colors.green,
-          constraints: BoxConstraints(maxWidth: 330),
-          padding: EdgeInsets.all(10),
-          child: Text(_text),
-        ),
-    )
-    ;
+      padding: EdgeInsets.all(5),
+      child: Container(
+        color: Colors.green,
+        constraints: BoxConstraints(maxWidth: 330),
+        padding: EdgeInsets.all(10),
+        child: Text(_text),
+      ),
+    );
   }
 }
 
 class ListWidget extends StatefulWidget {
+  List<Function> wwidget;
+  ListWidget(wwidget) {
+    this.wwidget = wwidget;
+  }
+
   @override
-  _ListWidgetState createState() => _ListWidgetState();
+  _ListWidgetState createState() => _ListWidgetState(wwidget);
 }
 
 class _ListWidgetState extends State<ListWidget> {
+  List<Function> wwidget;
+  _ListWidgetState(wwidget) {
+    this.wwidget = wwidget;
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implementar o JSON aqui dentro da classe
     //
     return new ListView.builder(
-
-      //children: <Widget>[ChatBubble("assad")],
+      itemBuilder: wwidget[1],
+      itemCount: wwidget.length,
     );
   }
 }
