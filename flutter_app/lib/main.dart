@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'chattab.dart';
 import 'grouptab.dart';
 import 'statustab.dart';
+import 'add_person_form.dart';
+import 'search_conversation.dart';
+import 'messages.dart';
+import 'widgets.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,12 +14,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Reseau',
       theme: ThemeData(
-
         primarySwatch: Colors.green,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Reseau'),
     );
   }
 }
@@ -31,7 +34,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
     ChatTab(),
     GroupTab(),
@@ -49,10 +53,15 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        actions: <Widget>[
+          ButtonIcon(AddPerson(), Icons.person_add),
+          ButtonIcon(SearchConversation(), Icons.search),
+          MenuButton()
+        ],
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
-      ),//,
+      ), //,
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
