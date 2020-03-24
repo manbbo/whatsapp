@@ -4,7 +4,6 @@ import 'grouptab.dart';
 import 'statustab.dart';
 import 'add_person_form.dart';
 import 'search_conversation.dart';
-import 'messages.dart';
 import 'widgets.dart';
 
 void main() => runApp(MyApp());

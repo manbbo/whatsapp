@@ -1,4 +1,6 @@
-//import 'package:flutter/foundation.dart';
+import 'package:flutter/cupertino.dart';
+
+import 'messages.dart';
 import 'package:flutter/material.dart';
 
 class ChatTile extends StatefulWidget {
@@ -199,12 +201,20 @@ class _SearchBarState extends State<SearchBar> {
 
 // TEXTBAR (CHAT)
 class TextBar extends StatefulWidget {
+  final List<ChatBubble> m;
+  TextBar({this.m});
+
   @override
-  _TextBar createState() => _TextBar();
+  _TextBar createState() => _TextBar(m);
 }
 
 class _TextBar extends State<TextBar> {
   TextEditingController textMessage;
+
+  List<ChatBubble> c;
+  _TextBar(List<ChatBubble> c) {
+    this.c = c;
+  }
 
   void initState() {
     super.initState();
@@ -213,6 +223,7 @@ class _TextBar extends State<TextBar> {
 
   void dispose() {
     textMessage.dispose();
+
     super.dispose();
   }
 
@@ -294,23 +305,10 @@ class _TextBar extends State<TextBar> {
                     suffixIcon: IconButton(
                       icon: Icon(Icons.send),
                       onPressed: () => {
-                        showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: new Text("MESSAGE SENT"),
-                                content: new Text(textMessage.text),
-                                actions: <Widget>[
-                                  // usually buttons at the bottom of the dialog
-                                  new FlatButton(
-                                    child: new Text("Close"),
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                  ),
-                                ],
-                              );
-                            }),
+                      //c = new MessagesWidget(chatBubble: new ChatBubble('_text', true),),
+                        c.add(new ChatBubble(textMessage.text, true)),
+                        setState((){}),
+                        textMessage.clear(),
                       },
                     ),
                   ),

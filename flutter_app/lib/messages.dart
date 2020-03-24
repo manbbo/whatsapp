@@ -2,20 +2,36 @@ import 'package:flutter/material.dart';
 import 'widgets.dart';
 
 class MessagesWidget extends StatefulWidget {
+  final List<ChatBubble> chatBubble;
+  MessagesWidget({this.chatBubble});
   @override
-  _MessagesWidgetState createState() => _MessagesWidgetState();
+  _MessagesWidgetState createState() => _MessagesWidgetState(chatBubble);
 }
 
 class _MessagesWidgetState extends State<MessagesWidget> {
+  List<ChatBubble> chatBubble;
+
+  _MessagesWidgetState(List<ChatBubble> c) {
+    this.chatBubble = c;
+  }
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return Column(mainAxisAlignment: MainAxisAlignment.start,
-        //crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          ChatBubble("aasda", false),
-          ChatBubble("asdasdasd", true),
-        ]);
+    return Column(
+      children: <Widget>[
+        Expanded(
+          child: ListView.builder(
+            itemCount: chatBubble.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Container(
+                alignment: Alignment.topRight,
+                child: chatBubble[index],
+              );
+            },
+          ),
+        )
+      ],
+    );
   }
 }
 
@@ -33,9 +49,11 @@ class _SingleMessagesPageState extends State<SingleMessagesPage> {
     this.title = title;
   }
 
+  static List<ChatBubble> c = [];
+  MessagesWidget m = new MessagesWidget(chatBubble: c,);
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
@@ -116,7 +134,10 @@ class _SingleMessagesPageState extends State<SingleMessagesPage> {
       ),
       body: Stack(
         overflow: Overflow.clip,
-        children: <Widget>[MessagesWidget(), TextBar()],
+        children: <Widget>[
+          m,
+          TextBar(m: c)]
+        ,
       ),
     );
   }
