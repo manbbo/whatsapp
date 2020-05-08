@@ -1,19 +1,42 @@
-<<<<<<< HEAD
-# Fake Whatsapp
+# fake_whatsapp
 
-Recreation of WhatsApp using Flutter for the Interface, and Json and SQLite for the Database. I'm also posting about it on TikTok @elmanbbo, so you can understand more the project
+A new Flutter project.
+
+## Getting Started
+
+This project is a starting point for a Flutter application.
+
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+
+For help getting started with Flutter, view our
+[online documentation](https://flutter.dev/docs), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
 
 ## Screens
-=======
-# About
-Using Flutter to recreate WhatsApp in this language and to learn more about the framework.
 
-## How to use
-You'll need Android Studio or other IDE. Then, you can just download the project and change it as you want. 
+- First Screen: Individual Chat Tab
 
-No needs to give credit to me.
-Feel free to fork or star, and give suggestions and feedbacks.
+[IMAGE 1]()
 
-The project is Opensource, meaning that you can use freely and modify as you wish.
->>>>>>> d27a1e119da0adcb6eb45a0f180836b0c35fd36a
+- Second Screen: Group Chat Tab
 
+[IMAGE 4]()
+
+- Third Screen: Add a Person
+
+[IMAGE 6]()
+
+- Forth Screen: Search for a Conversation
+
+[IMAGE 5]()
+
+- Fifth Screen: entering a chat
+
+[IMAGE 2]()
+
+- Sixth Screen: Emoticons Screen
+
+[IMAGE 3]()
