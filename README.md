@@ -1,6 +1,4 @@
-# fake_whatsapp
-
-A new Flutter project.
+# Reseau - A WhatsApp Clone made with Flutter
 
 ## Getting Started
 
