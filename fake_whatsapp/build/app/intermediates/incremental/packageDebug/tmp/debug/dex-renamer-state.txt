@@ -1,0 +1,4 @@
+#Fri May 08 09:13:31 BRT 2020
+base.0=C\:\\proj\\Flutter\\CreatingApps\\fake_whatsapp\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
