@@ -16,25 +16,30 @@ samples, guidance on mobile development, and a full API reference.
 ## Screens
 
 - First Screen: Individual Chat Tab
-
+<p align="center">
 ![IMAGE 1](https://github.com/manbbo/whatsapp/blob/master/Imgs/whast1.png)
+</p>
 
 - Second Screen: Group Chat Tab
-
+<p align="center">
 ![IMAGE 4](https://github.com/manbbo/whatsapp/blob/master/Imgs/whast4.png)
+</p>
 
 - Third Screen: Add a Person
-
+<p align="center">
 ![IMAGE 6](https://github.com/manbbo/whatsapp/blob/master/Imgs/whats6.png)
 
 - Forth Screen: Search for a Conversation
-
+<p align="center">
 ![IMAGE 5](https://github.com/manbbo/whatsapp/blob/master/Imgs/whast5.png)
+</p>
 
 - Fifth Screen: entering a chat
-
+<p align="center">
 ![IMAGE 2](https://github.com/manbbo/whatsapp/blob/master/Imgs/whast2.png)
+</p>
 
 - Sixth Screen: Emoticons Screen
-
+<p align="center">
 ![IMAGE 3](https://github.com/manbbo/whatsapp/blob/master/Imgs/whast3.png)
+</p>
