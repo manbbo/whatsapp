@@ -36,7 +36,7 @@ samples, guidance on mobile development, and a full API reference.
 <img src=https://github.com/manbbo/whatsapp/blob/master/Imgs/whast5.png>
 </p>
 
-- Fifth Screen: entering a chat
+- Fifth Screen: Into the Conversation
 <p align="center">
 <img src=https://github.com/manbbo/whatsapp/blob/master/Imgs/whast2.png>
 </p>
