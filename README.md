@@ -1,4 +1,5 @@
 # Reseau - A WhatsApp Clone made with Flutter
+# DEV STATUS: IN PROGRESS
 
 ## Getting Started
 

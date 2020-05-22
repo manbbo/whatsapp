@@ -44,17 +44,34 @@ class SingleMessagesPage extends StatefulWidget {
 }
 
 class _SingleMessagesPageState extends State<SingleMessagesPage> {
+  GlobalKey _globalKey;
   String title;
   _SingleMessagesPageState(title) {
     this.title = title;
   }
 
   static List<ChatBubble> c = [];
-  MessagesWidget m = new MessagesWidget(chatBubble: c,);
+  MessagesWidget m = new MessagesWidget(
+    chatBubble: c,
+  );
+
+  void changeChatBubble(fn) {
+    this.setState(() {
+      c.add(new ChatBubble(fn, true));
+    });
+
+    void rebuild(Element el) {
+      el.markNeedsBuild();
+      el.visitChildren(rebuild);
+    }
+
+    (context as Element).visitChildren(rebuild);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _globalKey,
       appBar: AppBar(
         title: Text(title),
         actions: <Widget>[
@@ -134,10 +151,7 @@ class _SingleMessagesPageState extends State<SingleMessagesPage> {
       ),
       body: Stack(
         overflow: Overflow.clip,
-        children: <Widget>[
-          m,
-          TextBar(m: c)]
-        ,
+        children: <Widget>[m, TextBar(m: changeChatBubble)],
       ),
     );
   }

@@ -25,22 +25,21 @@ class _ChatTileState extends State<ChatTile> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return
-      Container(
-        decoration: BoxDecoration(
-          border: Border(bottom: BorderSide(width: 0.2))
+    return Container(
+      decoration: BoxDecoration(border: Border(bottom: BorderSide(width: 0.2))),
+      child: ListTile(
+        leading: Icon(Icons.people),
+        title: Text(title),
+        subtitle: Text(
+          "JUST KIDDING, I AIN'T NO SUBTITLE, just testing the lines to see if everything is ok",
+          maxLines: 1,
         ),
-        child: ListTile(
-          leading: Icon(Icons.people),
-          title: Text(title),
-          subtitle: Text("JUST KIDDING, I AIN'T NO SUBTITLE, just testing the lines to see if everything is ok", maxLines: 1,),
-          onTap: () => {
-            Navigator.push(context, new MaterialPageRoute(
-              builder: (context) => path
-            ))
-          },
-        ),
-      );
+        onTap: () => {
+          Navigator.push(
+              context, new MaterialPageRoute(builder: (context) => path))
+        },
+      ),
+    );
   }
 }
 
@@ -61,32 +60,34 @@ class _MenuButtonState extends State<MenuButton> {
   }
   var _selection;
 
-    @override
-    Widget build(BuildContext context) {
-      return PopupMenuButton<MenuDrop>(
-        onSelected: (MenuDrop selection) { setState(() {
+  @override
+  Widget build(BuildContext context) {
+    return PopupMenuButton<MenuDrop>(
+      onSelected: (MenuDrop selection) {
+        setState(() {
           _selection = selection;
-        });},
-        itemBuilder: (BuildContext context) => <PopupMenuEntry<MenuDrop>> [
-          const PopupMenuItem<MenuDrop>(
-            value: MenuDrop.newtransmition,
-            child: Text('Nouvelle Diffusion'),
-          ),
-          const PopupMenuItem<MenuDrop>(
-            value: MenuDrop.reseauweb,
-            child: Text('Reseau Web'),
-          ),
-          const PopupMenuItem<MenuDrop>(
-            value: MenuDrop.important,
-            child: Text('Messages Importants'),
-          ),
-          const PopupMenuItem<MenuDrop>(
-            value: MenuDrop.settings,
-            child: Text('Paramètres'),
-          ),
-        ],
-      );
-    }
+        });
+      },
+      itemBuilder: (BuildContext context) => <PopupMenuEntry<MenuDrop>>[
+        const PopupMenuItem<MenuDrop>(
+          value: MenuDrop.newtransmition,
+          child: Text('Nouvelle Diffusion'),
+        ),
+        const PopupMenuItem<MenuDrop>(
+          value: MenuDrop.reseauweb,
+          child: Text('Reseau Web'),
+        ),
+        const PopupMenuItem<MenuDrop>(
+          value: MenuDrop.important,
+          child: Text('Messages Importants'),
+        ),
+        const PopupMenuItem<MenuDrop>(
+          value: MenuDrop.settings,
+          child: Text('Paramètres'),
+        ),
+      ],
+    );
+  }
 }
 
 //ICON BUTTON
@@ -116,8 +117,8 @@ class _ButtonIconState extends State<ButtonIcon> {
     return IconButton(
       icon: Icon(icon),
       onPressed: () => {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => addPerson))
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => addPerson))
       },
     );
   }
@@ -134,7 +135,7 @@ class SearchBar extends StatefulWidget {
   }
 
   @override
-  _SearchBarState createState() => _SearchBarState(hint,function);
+  _SearchBarState createState() => _SearchBarState(hint, function);
 }
 
 class _SearchBarState extends State<SearchBar> {
@@ -165,33 +166,32 @@ class _SearchBarState extends State<SearchBar> {
         //mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Container(
-            padding: EdgeInsets.all(5),
-            child: Stack(
-              children: <Widget>[
-                TextFormField(
-                  autofocus: true,
-                  controller: text,
-                  maxLines: 1,
-                  textCapitalization: TextCapitalization.sentences,
-                  // Decoration
-                  decoration: InputDecoration(
-                    fillColor: Colors.white,
-                    filled: true,
-                    border: OutlineInputBorder(),
-                    contentPadding: EdgeInsets.all(5),
+              padding: EdgeInsets.all(5),
+              child: Stack(
+                children: <Widget>[
+                  TextFormField(
+                    autofocus: true,
+                    controller: text,
+                    maxLines: 1,
+                    textCapitalization: TextCapitalization.sentences,
+                    // Decoration
+                    decoration: InputDecoration(
+                      fillColor: Colors.white,
+                      filled: true,
+                      border: OutlineInputBorder(),
+                      contentPadding: EdgeInsets.all(5),
                       //first Icon
-                    //Hint Text
-                    hintText: hint,
-                    // Suffix Icon
-                    suffixIcon: IconButton(
-                      icon: Icon(Icons.search),
-                      onPressed: function,
+                      //Hint Text
+                      hintText: hint,
+                      // Suffix Icon
+                      suffixIcon: IconButton(
+                        icon: Icon(Icons.search),
+                        onPressed: function,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            )
-          )
+                ],
+              ))
         ],
       ),
     );
@@ -201,7 +201,7 @@ class _SearchBarState extends State<SearchBar> {
 
 // TEXTBAR (CHAT)
 class TextBar extends StatefulWidget {
-  final List<ChatBubble> m;
+  final Function m;
   TextBar({this.m});
 
   @override
@@ -211,8 +211,8 @@ class TextBar extends StatefulWidget {
 class _TextBar extends State<TextBar> {
   TextEditingController textMessage;
 
-  List<ChatBubble> c;
-  _TextBar(List<ChatBubble> c) {
+  Function c;
+  _TextBar(Function c) {
     this.c = c;
   }
 
@@ -243,7 +243,6 @@ class _TextBar extends State<TextBar> {
                   maxLines: 3,
                   minLines: 1,
                   textCapitalization: TextCapitalization.sentences,
-                  // Decoration
                   decoration: InputDecoration(
                     fillColor: Colors.white,
                     filled: true,
@@ -305,9 +304,10 @@ class _TextBar extends State<TextBar> {
                     suffixIcon: IconButton(
                       icon: Icon(Icons.send),
                       onPressed: () => {
-                      //c = new MessagesWidget(chatBubble: new ChatBubble('_text', true),),
-                        c.add(new ChatBubble(textMessage.text, true)),
-                        setState((){}),
+                        //c = new MessagesWidget(chatBubble: new ChatBubble('_text', true),),
+                        setState(() {
+                          c(textMessage.text.toString());
+                        }),
                         textMessage.clear(),
                       },
                     ),
